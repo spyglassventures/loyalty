@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 
 function RatingButtons() {
-    const [selectedRating, setSelectedRating] = useState(null);
+    const [foodTaste, setfoodTaste] = useState(null);
 
     const ratings = ['Poor', 'Average', 'Good', 'OMG'];
 
@@ -15,18 +15,18 @@ function RatingButtons() {
                 <Button
                     key={index}
                     size="lg"
-                    colorScheme={selectedRating === rating ? 'blue' : 'gray'}
+                    colorScheme={foodTaste === rating ? 'blue' : 'gray'}
                     borderRadius="full"
                     m={2}
                     boxShadow="sm"
                     _hover={{ boxShadow: 'md' }}
-                    onClick={() => setSelectedRating(rating)}
+                    onClick={() => setfoodTaste(rating)}
                 >
                     {rating}
                 </Button>
             ))}
             <p style={{ marginTop: '20px' }}>
-                Selected Rating: <span style={{ color: 'blue.500', fontWeight: 'bold' }}>{selectedRating}</span>
+                Selected Rating: <span style={{ color: 'blue.500', fontWeight: 'bold' }}>{foodTaste}</span>
             </p>
         </Box>
     );

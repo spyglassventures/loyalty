@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 
 function RatingButtons() {
-    const [selectedRating, setSelectedRating] = useState(null);
+    const [overallExperience, setoverallExperience] = useState('');
 
     const ratings = ['Poor', 'Average', 'Good', 'Excellent'];
 
@@ -15,18 +15,18 @@ function RatingButtons() {
                 <Button
                     key={index}
                     size="lg"
-                    colorScheme={selectedRating === rating ? 'blue' : 'gray'}
+                    colorScheme={overallExperience === rating ? 'blue' : 'gray'}
                     borderRadius="full"
                     m={2}
                     boxShadow="sm"
                     _hover={{ boxShadow: 'md' }}
-                    onClick={() => setSelectedRating(rating)}
+                    onClick={() => setoverallExperience(rating)}
                 >
                     {rating}
                 </Button>
             ))}
             <p style={{ marginTop: '20px' }}>
-                Selected Rating: <span style={{ color: 'blue.500', fontWeight: 'bold' }}>{selectedRating}</span>
+                Selected Rating: <span style={{ color: 'blue.500', fontWeight: 'bold' }}>{overallExperience}</span>
             </p>
         </Box>
     );
