@@ -1,29 +1,75 @@
+import {
+  Box, Button, FormControl, FormLabel, Heading, Modal, ModalBody, 
+  ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, 
+  Text, Textarea, useDisclosure 
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { useRouter } from 'next/router';
-import styles from "../styles/Home.module.css";
 
 export default function RestaurantDetail() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, name, timestamp } = router.query;
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Assuming name and timestamp come from the query string.
-  const name = router.query.name;
-  const timestamp = router.query.timestamp;
+  const [comments, setComments] = useState('');
 
   const handleSend = () => {
-    console.log('Data sent');
+    console.log({
+      //overallExperience, 
+      //foodTaste, 
+      // cleanliness, 
+      //staffRating, 
+      comments
+    });
+    onOpen();  // Open the Thank You modal
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles.card}>
-        <h1>ID: {id}</h1>
-        <h1>Restaurant: {name}</h1>
-        <h2>Timestamp: {timestamp}</h2>
-        <input placeholder="Question 1" />
-        <input placeholder="Question 2" />
-        <input placeholder="Question 3" />
-        <button onClick={handleSend}>Send</button>
-      </div>
-    </main>
+    
+    <Box p={5} minW="600px" borderRadius="md" boxShadow="md" bg="white">
+
+
+            
+    
+     {/*  <Heading as="h1" mb={4}>Feedback for: {name}</Heading> */}
+
+      <FormControl>
+        <FormLabel fontSize="20px" fontWeight="bold">Any additional comments or suggestions?</FormLabel>
+        <Textarea 
+          value={comments} 
+          onChange={(e) => setComments(e.target.value)} 
+          placeholder="Share your thoughts with us" 
+          bgColor="gray.200" 
+          fontSize="20px"
+          color="grey.500" 
+        />
+      </FormControl>
+
+      <Button 
+        colorScheme="blue" 
+        onClick={handleSend} 
+        mt={4} 
+        size="lg"
+      >
+        Submit Feedback
+      </Button>
+
+      {/* Thank You Modal */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent bgColor="gray.100" color="grey.500">
+          <ModalHeader>Thank you!</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>We appreciate your feedback.</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button variant="ghost" mr={3} onClick={onClose} color="blue.500">
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Box>
   );
 }
