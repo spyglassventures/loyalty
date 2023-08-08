@@ -6,12 +6,20 @@ import {
 import { useState } from "react";
 import { useRouter } from 'next/router';
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({ onCommentChange = () => {} }) {
   const router = useRouter();
   const { id, name, timestamp } = router.query;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [comments, setComments] = useState('');
+  
+  const [comments, setInputValue] = useState("");
+
+  // handle text input change
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);      // set the state with the new input value
+    onCommentChange(event.target.value);    // send the new value up to the parent
+  };
+  
 
   const handleSend = () => {
     console.log({
@@ -37,7 +45,8 @@ export default function RestaurantDetail() {
         <FormLabel fontSize="20px" fontWeight="bold">Any additional comments or suggestions?</FormLabel>
         <Textarea 
           value={comments} 
-          onChange={(e) => setComments(e.target.value)} 
+          // onChange={(e) => setComments(e.target.value)}
+          onChange={handleInputChange}
           placeholder="Share your thoughts with us" 
           bgColor="gray.200" 
           fontSize="20px"

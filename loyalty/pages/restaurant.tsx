@@ -1,19 +1,65 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Questions from "../components/questions_list";
 import Image from "next/image";
+
+// Question Main page with Button and free text field
+import Questions from "../components/questions_list";
+
+// Questions (individual ones rating buttons)
 import Cleanliness from '../components/questions/cleanliness';
 import Foodtaste from '../components/questions/foodtaste';
 import Stafffriendlyness from '../components/questions/stafffriendlyness';
 import Valueformoney from '../components/questions/valueformoney';
 import Overallexperience from '../components/questions/overallexperience';
+
+
 import {
-  ChakraProvider, Button, Text, Flex, VStack
+  ChakraProvider, Button, Text, Flex, VStack, 
 } from "@chakra-ui/react";
+import { useState } from 'react';
 
 export default function RestaurantDetail() {
   const router = useRouter();
   const { id, name, timestamp } = router.query;
+
+
+  // import question rating answers
+  const [cleanlinessRating, setCleanlinessRating] = useState(null);
+  const [foodTasteRating, setFoodTasteRating] = useState(null);
+  const [overallexperienceeRating, setOverallexperienceeRating] = useState(null);
+  const [stafffriendlynessRating, setStafffriendlynessRating] = useState(null);
+  const [valueformoneyRating, setValueformoneyRating] = useState(null);
+  const [comments, setCommentFreetext] = useState(null);
+  
+
+
+      // When the "Save to JSON" button is clicked
+  const handleSaveToJson = () => {
+        const data = {
+          id: id,
+          name: name,
+          timestamp: timestamp,
+          R_cleanliness: cleanlinessRating,
+          R_foodTaste: foodTasteRating,
+          R_overallexperiencee: overallexperienceeRating,
+          R_stafffriendlyness: stafffriendlynessRating,
+          R_valueformoney: valueformoneyRating,
+          R_comments: comments,
+        
+          
+            //cleanliness: cleanlinessRating,
+            //foodTaste: foodTasteRating,
+            // ... include all other ratings
+        };
+
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${id}_at_${new Date().toISOString()}.json`; // name and timestamp
+        link.click();
+        URL.revokeObjectURL(url);
+    };
 
   if (!id || !name || !timestamp) {
     return <p>Loading...</p>;
@@ -43,14 +89,17 @@ export default function RestaurantDetail() {
           <Text color="white">Timestamp: {timestamp}</Text>
 
           <VStack spacing={4} w="100%">
-            <Cleanliness />
-            <Foodtaste />
-            <Stafffriendlyness />
-            <Valueformoney />
-            <Overallexperience />
+            <Cleanliness onRatingChange={(rating) => setCleanlinessRating(rating)} />
+            <Foodtaste onRatingChange={(rating) => setFoodTasteRating(rating)} />
+            <Stafffriendlyness onRatingChange={(rating) => setStafffriendlynessRating(rating)} />
+            <Valueformoney onRatingChange={(rating) => setValueformoneyRating(rating)} />
+            <Overallexperience onRatingChange={(rating) => setOverallexperienceeRating(rating)} />
           </VStack>
 
-          <Questions />
+          <Questions onCommentChange={(event) => setCommentFreetext(event)} />
+          <Button onClick={handleSaveToJson}>Save to JSON</Button>
+
+          
 
           <Link href="/">
             <Button colorScheme="teal" variant="outline">

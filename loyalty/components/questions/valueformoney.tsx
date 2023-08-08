@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 
-function RatingButtons() {
+function RatingButtons({ onRatingChange = () => {} }) {
     const [valueForMoney, setValueformoney] = useState('');
 
     const ratings = ["Bad", "Fair", "Bargain", "It's a steal!"];
+
+    const handleRatingClick = (rating) => {
+        setValueformoney(rating);
+        onRatingChange(rating);
+    }
 
     return (
         <Box p={5} minW="600px" borderRadius="md" boxShadow="md" bg="white">
@@ -20,7 +25,7 @@ function RatingButtons() {
                     m={2}
                     boxShadow="sm"
                     _hover={{ boxShadow: 'md' }}
-                    onClick={() => setValueformoney(rating)}
+                    onClick={() => handleRatingClick(rating)}
                 >
                     {rating}
                 </Button>
