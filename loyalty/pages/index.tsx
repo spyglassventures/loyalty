@@ -100,7 +100,8 @@ const Home: NextPage = () => {
       </div>
 
 
-      {/*
+       {/* NOT NEEDED AS WE WILL FORWARD TO URL  */}
+       {/*  
       <div className={styles.card}>
       <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
       <form onSubmit={handleSubmit}>
