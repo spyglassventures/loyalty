@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
+    "@worldcoin/idkit": "^0.5.1",
     "ethers": "^5",
     "framer-motion": "^10.15.1",
     "next": "^13",

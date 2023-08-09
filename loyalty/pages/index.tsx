@@ -2,13 +2,16 @@ import { ConnectWallet } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
 // 1. import `ChakraProvider` component
 
-import { ChakraProvider, extendTheme, Input, Box, Button, FormControl, FormLabel, 
+import { ChakraProvider, extendTheme, Flex, Input, Box, Button, FormControl, FormLabel, 
 } from "@chakra-ui/react";
 
 import Image from "next/image";
 import { NextPage } from "next";
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+
+// Worldcoin
+import { IDKitWidget } from '@worldcoin/idkit'
 
 
 const theme = extendTheme({
@@ -33,25 +36,71 @@ const Home: NextPage = () => {
     router.push(`/restaurant?id=${id}&name=${restaurantName}&timestamp=${timestamp}`);
   };
 
+  const onSuccess = (responseData) => {
+    window.location.href = "http://localhost:3000/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45";
+};
+
+
 
 
   return (
     <ChakraProvider theme={theme}>
+      <Flex justifyContent="center" alignItems="center" >
     <main className={styles.main}>
 
       <div className={styles.button}>
-        <ConnectWallet/>
+        {/* }<ConnectWallet/> */}
       </div>
       
       <div >
-        <Image 
-          src="/images/loyalty_logo.png"
-          alt="Placeholder preview of templates"
-          width={300}
-          height={200}
-        />
+      <Box p={50} shadow="md" borderRadius="md">
+        <Flex justifyContent="center" alignItems="center" height="100%">
+            <Image 
+              src="/images/loyalty_logo.png"
+              alt="Placeholder preview of templates"
+              width={300}
+              height={200}
+            />
+        </Flex>
+      </Box>
       </div>
 
+      
+
+      <div >
+      <Box p={50} shadow="md" borderRadius="md">
+        <p>Step 1: Please open World ID Simulator App via Phone</p>
+      <div className={styles.card}>
+        <Image 
+          src="/images/qr_wc_simulator.png"
+          alt="Open Simulator App"
+          width={300}
+          height={300}
+        />
+      </div>
+      </Box>
+      </div>
+
+      <div>
+      <Box p={50} shadow="md" borderRadius="md">
+      <p>Step 2: Please click here to generate World ID QR code.</p>
+      <p>You can scan the code with the Simulator on your phone.</p>
+      <br></br>
+          <IDKitWidget
+          app_id="app_staging_8698f33d5c7e58f388c9bebad26012bd" // obtained from the Developer Portal (layality app)
+          //action="vote_1" // this is your action name from the Developer Portal
+          //signal="user_value" // any arbitrary value the user is committing to, e.g. a vote
+          onSuccess={onSuccess}
+          credential_types={['orb', 'phone']} // the credentials you want to accept
+          enableTelemetry
+        >
+          {({ open }) => <button onClick={open}>👉 Verify with World ID</button>}
+        </IDKitWidget>
+        </Box>
+      </div>
+
+
+      {/*
       <div className={styles.card}>
       <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
       <form onSubmit={handleSubmit}>
@@ -77,8 +126,13 @@ const Home: NextPage = () => {
       </form>
     </Box>
       </div>
+      */}
+
+
     </main>
+    </Flex>
     </ChakraProvider>
+    
   );
 };
 
