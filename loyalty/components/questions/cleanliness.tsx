@@ -9,7 +9,9 @@ function RatingButtons({ onRatingChange = (rating: RatingType) => {} }) {
     // type RatingType = 'Dirty' | 'Average' | 'Good' | 'Excellent';
 
 
-    const ratings = ['Dirty', 'Average', 'Good', 'Excellent'];
+    //const ratings = ['Dirty', 'Average', 'Good', 'Excellent'];
+    const ratings: RatingType[] = ['Dirty', 'Average', 'Good', 'Excellent'];
+
 
     const handleRatingClick = (rating: RatingType) => {
         setCleanliness(rating);
