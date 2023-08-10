@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 
-function RatingButtons({ onRatingChange = () => {} }) {
-    const [cleanliness, setCleanliness] = useState(null);
+type RatingType = 'Dirty' | 'Average' | 'Good' | 'Excellent';
+
+function RatingButtons({ onRatingChange = (rating: RatingType) => {} }) {
+    
+
+    // type RatingType = 'Dirty' | 'Average' | 'Good' | 'Excellent';
+
 
     const ratings = ['Dirty', 'Average', 'Good', 'Excellent'];
 
-    const handleRatingClick = (rating) => {
+    const handleRatingClick = (rating: RatingType) => {
         setCleanliness(rating);
         onRatingChange(rating);
     }
+    
+    const [cleanliness, setCleanliness] = useState<RatingType | null>(null);
 
     return (
         <Box p={5} minW="600px" borderRadius="md" boxShadow="md" bg="white">
