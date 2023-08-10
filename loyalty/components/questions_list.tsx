@@ -6,7 +6,7 @@ import {
 import { useState } from "react";
 import { useRouter } from 'next/router';
 
-export default function RestaurantDetail({ onCommentChange = () => {} }) {
+export default function RestaurantDetail({ onCommentChange = (comment: string) => {} }) {
   const router = useRouter();
   const { id, name, timestamp } = router.query;
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -15,10 +15,10 @@ export default function RestaurantDetail({ onCommentChange = () => {} }) {
   const [comments, setInputValue] = useState("");
 
   // handle text input change
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);      // set the state with the new input value
-    onCommentChange(event.target.value);    // send the new value up to the parent
-  };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+    onCommentChange(event.target.value);
+};
   
 
   const handleSend = () => {
