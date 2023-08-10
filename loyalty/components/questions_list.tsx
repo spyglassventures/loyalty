@@ -70,7 +70,7 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
           <ModalHeader>Thank you!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>We appreciate your feedback.</Text>
+            <Text>We appreciate your feedback. Thank you!</Text>
           </ModalBody>
           <ModalFooter>
             <Button variant="ghost" mr={3} onClick={onClose} color="blue.500">
