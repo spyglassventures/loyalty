@@ -11,12 +11,13 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
   const { id, name, timestamp } = router.query;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  
   const [comments, setInputValue] = useState("");
 
   // handle text input change
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setInputValue(event.target.value);
-      onCommentChange(event.target.value);
+    setInputValue(event.target.value);
+    onCommentChange(event.target.value);
 };
   
 
@@ -68,7 +69,7 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
           <ModalHeader>Thank you!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>We appreciate your feedback. Thank you!</Text>
+            <Text>We appreciate your feedback.</Text>
           </ModalBody>
           <ModalFooter>
             <Button variant="ghost" mr={3} onClick={onClose} color="blue.500">
