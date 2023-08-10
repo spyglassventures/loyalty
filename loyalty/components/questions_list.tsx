@@ -11,13 +11,12 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
   const { id, name, timestamp } = router.query;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  
   const [comments, setInputValue] = useState("");
 
   // handle text input change
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    onCommentChange(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setInputValue(event.target.value);
+      onCommentChange(event.target.value);
 };
   
 
@@ -41,18 +40,17 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
     
      {/*  <Heading as="h1" mb={4}>Feedback for: {name}</Heading> */}
 
-      <FormControl>
+     <FormControl>
         <FormLabel fontSize="20px" fontWeight="bold">Any additional comments or suggestions?</FormLabel>
         <Textarea 
-          value={comments} 
-          // onChange={(e) => setComments(e.target.value)}
-          onChange={handleInputChange}
-          placeholder="Share your thoughts with us" 
-          bgColor="gray.200" 
-          fontSize="20px"
-          color="grey.500" 
+            value={comments} 
+            onChange={handleInputChange}
+            placeholder="Share your thoughts with us" 
+            bgColor="gray.200" 
+            fontSize="20px"
+            color="grey.500" 
         />
-      </FormControl>
+    </FormControl>
 
       <Button 
         colorScheme="blue" 
