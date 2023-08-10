@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 
-function RatingButtons({ onRatingChange = () => {} }) {
-    const [foodTaste, setfoodTaste] = useState(null);
+type RatingType = 'Poor' | 'Average' | 'Good' | 'OMG';
 
-    const ratings = ['Poor', 'Average', 'Good', 'OMG'];
+function RatingButtons({ onRatingChange = (rating: RatingType) => {} }) {
+    
+    const ratings: RatingType[] = ['Poor', 'Average', 'Good', 'OMG'];
 
-    const handleRatingClick = (rating) => {
+    const handleRatingClick = (rating: RatingType) => {
         setfoodTaste(rating);
         onRatingChange(rating);
     }
+    
+    const [foodTaste, setfoodTaste] = useState<RatingType | null>(null);
+
 
     return (
         <Box p={5} minW="600px" borderRadius="md" boxShadow="md" bg="white">
