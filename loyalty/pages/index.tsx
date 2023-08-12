@@ -193,7 +193,7 @@ const Home: NextPage = () => {
       <div>
       <Box p={50} shadow="md" borderRadius="md">
       <p>Step 2: Please click link below to generate World ID QR code.</p>
-      <p>On your phone: "Scan QR or Paste data", then scan the code shown in the desktop browser.</p>
+      <p>On your phone: Click [Scan QR or Paste data], then scan the code shown in the desktop browser.</p>
       <p>When verified on your phone, close the success page (hit x). This will be forwarded to the rating page.</p>
       <br></br>
           <IDKitWidget
