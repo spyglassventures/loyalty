@@ -92,7 +92,7 @@ const Home: NextPage = () => {
             />
         </Flex>
       <br></br>
-      <p>Since we can't demo you the full experience online, we like to ask you to do the following:</p>
+      <p>Since we can not demo you the full experience online, we like to ask you to do the following:</p>
       <p>1. Open your phone and scan the QR code below.</p>
       <p>2. Then click the link below in your browser to proof your humanhood (simulator), then provide the rating.</p>
       </Box>
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                       <ModalCloseButton />
                       <ModalBody>
               <Text mb={4}>
-                  (Out of demo scope, partially from previous hackathon) We imagine that when a customer uses the loyalty protocol the first time, a keypass is created on the user's phone (iCloud backed). 
+                  (Out of demo scope, most of keypass from previous hackathon) We imagine that when a customer uses the loyalty protocol the first time, a keypass is created on the users phone (iCloud backed). 
               </Text>
               <Text fontWeight="bold">
                   How it works:
@@ -144,7 +144,7 @@ const Home: NextPage = () => {
               <List spacing={2} mb={4}>
                   <ListItem>- Airdrop loyalty cards for customers</ListItem>
                   <ListItem>- Advertise within the protocol/app</ListItem>
-                  <ListItem>- Restaurants have to pay "loyalty gas" to reply to feedback</ListItem>
+                  <ListItem>- Restaurants have to pay loyalty gas to reply to feedback</ListItem>
                   <ListItem>- Unlock additional premium features</ListItem>
               </List>
 
