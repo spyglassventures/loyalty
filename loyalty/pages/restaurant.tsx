@@ -99,7 +99,7 @@ export default function RestaurantDetail() {
           </VStack>
 
           <Questions onCommentChange={(event) => setCommentFreetext(event)} />
-          <Button onClick={handleSaveToJson}>Save to JSON</Button>
+          <Button onClick={handleSaveToJson}>Post feedback & earn loyalty tokens (Demo: Save to JSON)</Button>
 
           
 
