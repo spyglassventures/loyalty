@@ -10,8 +10,12 @@ import { NextPage } from "next";
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { CredentialType } from '@worldcoin/idkit'
+
 // Worldcoin
 import { IDKitWidget } from '@worldcoin/idkit'
+
+let credentialTypes = process.env.NODE_ENV === 'production' ? [] : ['orb', 'phone'];
 
 
 const theme = extendTheme({
@@ -39,9 +43,6 @@ const Home: NextPage = () => {
   const onSuccess = () => {
     window.location.href = "http://localhost:3000/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45";
 };
-
-
-
 
   return (
     <ChakraProvider theme={theme}>
@@ -91,7 +92,11 @@ const Home: NextPage = () => {
           //action="vote_1" // this is your action name from the Developer Portal
           //signal="user_value" // any arbitrary value the user is committing to, e.g. a vote
           onSuccess={onSuccess}
-          credential_types={['orb', 'phone']} // the credentials you want to accept
+          //credential_types={['orb', 'phone'] as CredentialType[]}
+          // credential_types={[CredentialType.Orb, CredentialType.Phone]}
+          //credential_types={['orb', 'phone']} // the credentials you want to accept
+          // @ts-ignore
+          credential_types={['orb', 'phone']}
           enableTelemetry
         >
           {({ open }) => <button onClick={open}>👉 Verify with World ID</button>}
