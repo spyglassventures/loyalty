@@ -22,14 +22,16 @@ export default function RestaurantDetail() {
   const router = useRouter();
   const { id, name, timestamp } = router.query;
 
+  type RatingType = 'Dirty' | 'Average' | 'Good' | 'Excellent' | 'Poor' | 'OMG' | 'Amazing';
+
 
   // import question rating answers
-  const [cleanlinessRating, setCleanlinessRating] = useState(null);
-  const [foodTasteRating, setFoodTasteRating] = useState(null);
-  const [overallexperienceeRating, setOverallexperienceeRating] = useState(null);
-  const [stafffriendlynessRating, setStafffriendlynessRating] = useState(null);
-  const [valueformoneyRating, setValueformoneyRating] = useState(null);
-  const [comments, setCommentFreetext] = useState(null);
+  const [cleanlinessRating, setCleanlinessRating] = useState<RatingType | null>(null);
+  const [foodTasteRating, setFoodTasteRating] = useState<RatingType | null>(null);
+  const [overallexperienceeRating, setOverallexperienceeRating] = useState<RatingType | null>(null);
+  const [stafffriendlynessRating, setStafffriendlynessRating] = useState<RatingType | null>(null);
+  const [valueformoneyRating, setValueformoneyRating] = useState<RatingType | null>(null);
+  const [comments, setCommentFreetext] = useState<string | null>(null);
   
 
 
