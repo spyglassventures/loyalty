@@ -41,7 +41,8 @@ const Home: NextPage = () => {
   };
 
   const onSuccess = () => {
-    window.location.href = "http://localhost:3000/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45";
+    // window.location.href = "http://localhost:3000/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45";
+    window.location.href = "https://loyalty-f15s55w52-spyglassventures.vercel.app/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45%22"
 };
 
   return (
