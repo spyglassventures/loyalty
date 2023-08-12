@@ -73,15 +73,21 @@ const Home: NextPage = () => {
 
       <div >
       <Box p={50} shadow="md" borderRadius="md" justifyContent="center" alignItems="center">
-      <p>Scenario: Imagine you had lunch and are ready to pay your check. </p>
+              <Text fontWeight="bold">
+              Scenario: Imagine you just had lunch and you are walking to the cashing to pay for your food.
+              </Text>
+      
       <br></br>
-      <p>At the cashier, you are shown a QR code on a mounted phone with a refreshing QR code. </p>
-      <p>When scanned, your phone and the restaurants phone co-sign a transaction which varifies that: </p>
+      <p>After you paid, you are asked to rate the restaurant by scanning a QR code on a mounted phone. </p>
+      <p>The phone shows a (refreshing) QR code that will create a unique identifier and directs you to the rating.</p>
+      <br></br>
+      <p>Your phone and the restaurants phone co-sign a transaction which verifies that: </p>
       <p>- you were here </p>
       <p>- at this point in time</p>
       <p>- your humanhood (Worldcoin)</p>
       <br></br>
-      <p>The message of this transaction contains your rating of the restaurant and mints you reward tokens. </p>
+      <p>The message of this transaction contains your rating of the restaurant.</p>
+      <p>Sharing feedback earns your loyalty tokens.</p>
       <br></br>
         <Flex justifyContent="left" alignItems="left" height="100%">
             <Image 
@@ -104,7 +110,7 @@ const Home: NextPage = () => {
               <Modal isOpen={isOpen} onClose={onClose} size="xl">
                   <ModalOverlay />
                   <ModalContent color="black">
-                      <ModalHeader>Keypass wallet cration and economics</ModalHeader>
+                      <ModalHeader>Keypass wallet creation and economics</ModalHeader>
                       <ModalCloseButton />
                       <ModalBody>
               <Text mb={4}>
@@ -172,7 +178,7 @@ const Home: NextPage = () => {
 
       <div >
       <Box p={50} shadow="md" borderRadius="md">
-        <p>Step 1: Please open World ID Simulator App via Phone</p>
+        <p>Step 1: Please open World ID Simulator App via your Phone</p>
       <div className={styles.card}>
         <Image 
           src="/images/qr_wc_simulator.png"
@@ -187,8 +193,8 @@ const Home: NextPage = () => {
       <div>
       <Box p={50} shadow="md" borderRadius="md">
       <p>Step 2: Please click link below to generate World ID QR code.</p>
-      <p>You can scan the code with the Simulator on your phone.</p>
-      <p>When verified, you will be forwarded to the rating page.</p>
+      <p>On your phone: "Scan QR or Paste data", then scan the code shown in the desktop browser.</p>
+      <p>When verified on your phone, close the success page (hit x). This will be forwarded to the rating page.</p>
       <br></br>
           <IDKitWidget
           app_id="app_staging_8698f33d5c7e58f388c9bebad26012bd" // obtained from the Developer Portal (layality app)
