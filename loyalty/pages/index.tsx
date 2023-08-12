@@ -74,7 +74,7 @@ const Home: NextPage = () => {
       <div >
       <Box p={50} shadow="md" borderRadius="md" justifyContent="center" alignItems="center">
               <Text fontWeight="bold">
-              Scenario: Imagine you just had lunch and you are walking to the cashing to pay for your food.
+              Scenario: Imagine you just had lunch and you are walking to the cashier to pay for your food.
               </Text>
       
       <br></br>
@@ -137,13 +137,13 @@ const Home: NextPage = () => {
 
               <Text mb={4}>
                   After a few ratings linked to the keypass, the protocols trigger the creation of a keypass (iCloud backup) linked smart wallet.
-                  To this wallet, the reward tokens are issued every additioanl time a rating is performed. 
+                  To this wallet, the reward tokens are issued every time a rating is performed. 
                   </Text>
               <Text fontWeight="bold">
                   Economics:
               </Text>
               <Text mb={4}>
-                  The reward tokens are tradable and can be used to buy food in restaurants. 
+                  The reward tokens are tradable and can be used to get discounts in restaurants. 
                   The tokens are valuable since restaurants have to buy them to advertise within the protocol. We imagine:
               </Text>
 
