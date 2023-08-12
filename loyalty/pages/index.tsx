@@ -36,7 +36,7 @@ const Home: NextPage = () => {
     router.push(`/restaurant?id=${id}&name=${restaurantName}&timestamp=${timestamp}`);
   };
 
-  const onSuccess = (responseData) => {
+  const onSuccess = () => {
     window.location.href = "http://localhost:3000/restaurant?id=401284&name=Pooooetro&timestamp=2023-08-27T22:45";
 };
 
