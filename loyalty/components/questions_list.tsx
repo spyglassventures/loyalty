@@ -52,7 +52,7 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
             color="grey.500" 
         />
     </FormControl>
-
+{/*
       <Button 
         colorScheme="blue" 
         onClick={handleSend} 
@@ -61,6 +61,7 @@ export default function RestaurantDetail({ onCommentChange = (comment: string) =
       >
         Submit Feedback
       </Button>
+      */}
 
       {/* Thank You Modal */}
       <Modal isOpen={isOpen} onClose={onClose}>

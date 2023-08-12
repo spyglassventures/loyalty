@@ -99,9 +99,21 @@ export default function RestaurantDetail() {
           </VStack>
 
           <Questions onCommentChange={(event) => setCommentFreetext(event)} />
-          <Button onClick={handleSaveToJson}>Post feedback & earn loyalty tokens (Demo: Save to JSON)</Button>
+        {/* <Button onClick={handleSaveToJson}>Post feedback & earn loyalty tokens (Demo: Save to JSON)</Button> */}
 
-          
+          <Button 
+              onClick={handleSaveToJson}
+              backgroundColor="lightblue" 
+              color="black"
+              
+              borderRadius="4px"
+              padding="8px 16px"
+              fontSize="18px"
+              _hover={{ backgroundColor: 'teal' }}
+              variant="outline"
+            >
+              Share feedback & earn loyalty tokens (Demo: Save to JSON)
+        </Button>
 
           <Link href="/">
             <Button colorScheme="teal" variant="outline">

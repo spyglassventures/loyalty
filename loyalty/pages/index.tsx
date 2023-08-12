@@ -2,8 +2,7 @@ import { ConnectWallet } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
 // 1. import `ChakraProvider` component
 
-import { ChakraProvider, extendTheme, Flex, Input, Box, Button, FormControl, FormLabel, 
-} from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, Flex, Button, Box, FormControl, FormLabel, List, ListItem, Modal,  ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Text, useDisclosure } from '@chakra-ui/react';
 
 import Image from "next/image";
 import { NextPage } from "next";
@@ -34,6 +33,9 @@ const Home: NextPage = () => {
   const [timestamp, setTimestamp] = useState('');
   const router = useRouter();
 
+  // for overalay
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const id = Math.floor(Math.random() * 1000000); // Generating a random id for demonstration. You can replace this with any logic.
@@ -53,6 +55,8 @@ const Home: NextPage = () => {
       <div className={styles.button}>
         {/* }<ConnectWallet/> */}
       </div>
+
+      
       
       <div >
       <Box p={50} shadow="md" borderRadius="md">
@@ -66,6 +70,103 @@ const Home: NextPage = () => {
         </Flex>
       </Box>
       </div>
+
+      <div >
+      <Box p={50} shadow="md" borderRadius="md" justifyContent="center" alignItems="center">
+      <p>Scenario: Imagine you had lunch and are ready to pay your check. </p>
+      <br></br>
+      <p>At the cashier, you are shown a QR code on a mounted phone with a refreshing QR code. </p>
+      <p>When scanned, your phone and the restaurants phone co-sign a transaction which varifies that: </p>
+      <p>- you were here </p>
+      <p>- at this point in time</p>
+      <p>- your humanhood (Worldcoin)</p>
+      <br></br>
+      <p>The message of this transaction contains your rating of the restaurant and mints you reward tokens. </p>
+      <br></br>
+        <Flex justifyContent="left" alignItems="left" height="100%">
+            <Image 
+              src="/images/Setting.png"
+              alt="Placeholder preview of templates"
+              width={600}
+              height={400}
+            />
+        </Flex>
+      <br></br>
+      <p>Since we can't demo you the full experience online, we like to ask you to do the following:</p>
+      <p>1. Open your phone and scan the QR code below.</p>
+      <p>2. Then click the link below in your browser to proof your humanhood (simulator), then provide the rating.</p>
+      </Box>
+      </div>
+
+      <Flex justifyContent="flex-end" position="fixed" top={4} right={4} zIndex={10}>
+        <Button onClick={onOpen}>Learn what happens under the hood</Button>
+
+              <Modal isOpen={isOpen} onClose={onClose} size="xl">
+                  <ModalOverlay />
+                  <ModalContent color="black">
+                      <ModalHeader>Keypass wallet cration and economics</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+              <Text mb={4}>
+                  (Out of demo scope, partially from previous hackathon) We imagine that when a customer uses the loyalty protocol the first time, a keypass is created on the user's phone (iCloud backed). 
+              </Text>
+              <Text fontWeight="bold">
+                  How it works:
+              </Text>
+              <Text mb={4}>
+                  If a customer uses the protocol, the passkeys (unique identifier) are recognized and the user can sign in.
+                  See the creation process of the passkey and the login process below.
+              </Text>
+
+              <Flex justifyContent="flex-start" alignItems="flex-start" height="100%" mb={4}>
+                  <video width="600" height="400" controls>
+                      <source src="/images/passkey.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                  </video>
+              </Flex>
+
+              <Text fontWeight="bold">
+                  Wallet creation:
+              </Text>
+
+              <Text mb={4}>
+                  After a few ratings linked to the keypass, the protocols trigger the creation of a keypass (iCloud backup) linked smart wallet.
+                  To this wallet, the reward tokens are issued every additioanl time a rating is performed. 
+                  </Text>
+              <Text fontWeight="bold">
+                  Economics:
+              </Text>
+              <Text mb={4}>
+                  The reward tokens are tradable and can be used to buy food in restaurants. 
+                  The tokens are valuable since restaurants have to buy them to advertise within the protocol. We imagine:
+              </Text>
+
+              <List spacing={2} mb={4}>
+                  <ListItem>- Airdrop loyalty cards for customers</ListItem>
+                  <ListItem>- Advertise within the protocol/app</ListItem>
+                  <ListItem>- Restaurants have to pay "loyalty gas" to reply to feedback</ListItem>
+                  <ListItem>- Unlock additional premium features</ListItem>
+              </List>
+
+              <Text fontWeight="bold">
+                  Payments:
+              </Text>
+              <Text mb={4}>
+                  Given a large protocol user base, one could implement a payment feature using the same QR code that is used for the rating.
+                  Fees could be much lower then Credit Card fees, but would further enhance the token value. This opens the opportunity for staking.
+              </Text>
+
+
+
+          </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={onClose}>
+                            Close
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+          </Flex>
 
       
 
@@ -85,8 +186,9 @@ const Home: NextPage = () => {
 
       <div>
       <Box p={50} shadow="md" borderRadius="md">
-      <p>Step 2: Please click here to generate World ID QR code.</p>
+      <p>Step 2: Please click link below to generate World ID QR code.</p>
       <p>You can scan the code with the Simulator on your phone.</p>
+      <p>When verified, you will be forwarded to the rating page.</p>
       <br></br>
           <IDKitWidget
           app_id="app_staging_8698f33d5c7e58f388c9bebad26012bd" // obtained from the Developer Portal (layality app)
