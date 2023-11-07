@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
   const permission = await dfns.permissions.createPermission({
     body: {
       name: `Allow Wallet Create/Read - ${Date.now()}`,
-      operations: ['Wallets:Create', 'Wallets:Read', 'Wallets:GenerateSignature', 'Wallets:ReadSignature'],
+      operations: ['Wallets:Create', 'Wallets:Read'],
     },
   })
 
